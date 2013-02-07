@@ -151,7 +151,7 @@ module Capybara::Poltergeist
 
     def cookies
       cookies = command('cookies')
-      if cookies.respond_to(:map) 
+      if cookies.respond_to?(:map) 
         Hash[command('cookies').map { |cookie| [cookie['name'], Cookie.new(cookie)] }]
       else
         puts "ERROR: command('cookies') does not respond_to map"
