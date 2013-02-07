@@ -150,13 +150,13 @@ module Capybara::Poltergeist
     end
 
     def cookies
-      cookies = command('cookies')
-      if cookies.respond_to?(:map) 
+      my_cookies = command('cookies')
+      if my_cookies.respond_to?(:map) 
         Hash[command('cookies').map { |cookie| [cookie['name'], Cookie.new(cookie)] }]
       else
         puts "ERROR: command('cookies') does not respond_to map"
-        puts "ERROR: #{cookies.class}"
-        puts "ERROR: #{cookies.to_s}"
+        puts "ERROR: #{my_cookies.class}"
+        puts "ERROR: #{my_cookies.to_s}"
         raise 'Cookies does not respond_to map... issues with phantomjs? should we retry a few times?' 
       end
     end
